@@ -9,11 +9,11 @@ function* getDetailsMovieWorker({
 }: ReturnType<typeof actions.getDetailsMovieRequest>) {
     try {
         const data = yield call(getDetailsMovie, payload);
-
         if (data.Response === "False") {
             yield put(actions.getDetailsMovieFailure(data.Error));
-        } 
-        yield put(actions.getDetailsMovieSuccess(data));
+        } else {
+            yield put(actions.getDetailsMovieSuccess(data));
+        }
     } catch (e) {
         yield put(actions.getDetailsMovieFailure(e));
     }
@@ -24,15 +24,12 @@ function* getSearchMoviesWorker({
 }: ReturnType<typeof actions.getSearchMoviesRequest>) {
     try {
         const data = yield call(getSearchMovies, payload);
-
-        console.log(data);
-
         if (data.Response === "False") {
             yield put(actions.getSearchMoviesFailure(data.Error));
+        } else {
+            yield put(actions.getSearchMoviesSuccess(data));
         }
-        yield put(actions.getSearchMoviesSuccess(data));
     } catch (e) {
-
         yield put(actions.getSearchMoviesFailure(e));
     }
 }

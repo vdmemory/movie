@@ -1,3 +1,19 @@
 .main {
-    outline: 1px solid blue;
+    padding: 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    & .movies {
+        display: grid;
+        grid-gap: 1em 1em;
+        grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+        margin: 0;
+        padding: 0;
+    }
 }
+
+.message {
+    text-align: center;
+}
+

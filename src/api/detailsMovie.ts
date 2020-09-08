@@ -6,6 +6,7 @@ type FetchedMovieDetails = {
     Year: string;
     Runtime: string;
     Genre: string;
+    Director: string;
     Actors: string;
     Plot: string;
     Language: string;
@@ -30,6 +31,7 @@ export class DetailsMovie {
     year: string;
     runtime: string;
     genre: string;
+    director: string;
     actors: string;
     plot: string;
     language: string;
@@ -46,6 +48,7 @@ export class DetailsMovie {
         this.year = movie.Year;
         this.runtime = movie.Runtime;
         this.genre = movie.Genre;
+        this.director = movie.Director;
         this.actors = movie.Actors;
         this.plot = movie.Plot;
         this.language = movie.Language;
@@ -64,4 +67,5 @@ export class DetailsMovie {
 export const getDetailsMovie = (movieId: string) =>
     api
         .get(``, { params: { i: movieId } })
-        .then(({ data }) => new DetailsMovie(data));
+        .then(({ data }) => (data.Response === "True") ? new DetailsMovie(data) : Promise.reject(data))
+        .catch((error) => error);

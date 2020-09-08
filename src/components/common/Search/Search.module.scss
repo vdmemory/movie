@@ -1,0 +1,35 @@
+.bar {
+    position: relative;
+    margin: 0 auto;
+    max-width: 575px;
+    border-radius: 30px;
+    border: 1px solid #dcdcdc;
+
+    &:hover {
+        box-shadow: 1px 1px 8px 1px #dcdcdc;
+    }
+
+    &:focus-within {
+        box-shadow: 1px 1px 8px 1px #dcdcdc;
+        outline: none;
+    }
+
+    & .searchbar {
+        height: 45px;
+        border: none;
+        width: calc(100% - 70px);
+        font-size: 16px;
+        outline: none;
+        margin-left: 50px;
+        border-radius: 30px;
+    }
+
+    & .searchIcon {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 13px;
+        left: 18px;
+        color: #606060;
+    }
+}

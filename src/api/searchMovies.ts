@@ -8,6 +8,7 @@ type FetchedSearchMovies = {
     Type: string;
     Poster: string;
     Response: boolean;
+    totalResults: string;
     Error: string;
 };
 
@@ -19,6 +20,7 @@ export class SearchMovies {
     type: string;
     poster: string;
     response: boolean;
+    totalResults: string;
     error: string;
     constructor(movie: FetchedSearchMovies) {
         this.title = movie.Title;
@@ -27,6 +29,7 @@ export class SearchMovies {
         this.type = movie.Type;
         this.poster = movie.Poster;
         this.response = movie.Response;
+        this.totalResults = movie.totalResults;
         this.error = movie.Error;
     }
 }
