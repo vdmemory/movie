@@ -1,7 +1,7 @@
 import React from "react";
 
 import noposter from "./noposter.png"
-import styles from "./Movie.module.scss";
+import styles from "./Card.module.scss";
 
 type Props = {
     title: string;
@@ -11,7 +11,7 @@ type Props = {
     onClick(id: string): void;
 };
 
-const Movie: React.FC<Props> = ({ title, poster, onClick, id, year }) => {
+const Card: React.FC<Props> = ({ title, poster, onClick, id, year }) => {
     const handleClick = () => {
         onClick(id);
     };
@@ -26,4 +26,4 @@ const Movie: React.FC<Props> = ({ title, poster, onClick, id, year }) => {
     );
 };
 
-export default Movie;
+export default Card;

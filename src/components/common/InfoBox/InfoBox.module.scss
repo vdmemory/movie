@@ -1,0 +1,25 @@
+.infoBox {
+    border-radius: 6px;
+    box-shadow: 0 0 0.2em rgba(0, 0, 0, .5);
+    & .solid {
+        height: 1px;
+        background-color: #d3d2d2;
+        width: 97%;
+        margin: 0 auto;
+    }
+    & .title{
+        font-size: 22px;
+        line-height: 22px;
+        padding: 15px 30px 15px;
+        margin: 0;
+    }
+    & .content{
+        & .leftBar{
+            & img{}
+        }
+        & .rightBar{
+           
+        }
+    }
+    & .description{}
+}

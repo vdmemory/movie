@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { selectSearchMovies } from "../../store/selectors";
 import { SearchMovies } from "../../api/searchMovies";
 import Header from "../common/Header/Header";
-import Movie from "../common/Movie/Movie";
+import Card from "../common/Card/Card";
 import Spinner from "../common/Spinner/Spinner";
 
 import styles from "./Movies.module.scss";
@@ -34,7 +34,7 @@ const Movies: React.FC = () => {
     );
 
     const renderMovies = (searchMovies: SearchMovies) => (
-        <Movie
+        <Card
             key={`movie${searchMovies.imdbId}`}
             id={searchMovies.imdbId}
             onClick={handleMovieClick}
