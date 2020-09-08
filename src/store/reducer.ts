@@ -30,7 +30,7 @@ const reducer: Reducer<State, Actions> = (state = initialState, action) => {
                 },
                 error: {
                     ...state.error,
-                    searchMovies: null
+                    searchMovies: null,
                 },
             };
         case type.GET_SEARCH_MOVIES_SUCCESS:
@@ -63,7 +63,7 @@ const reducer: Reducer<State, Actions> = (state = initialState, action) => {
                 },
                 error: {
                     ...state.error,
-                    detailsMovie: null
+                    detailsMovie: null,
                 },
             };
         case type.GET_DETAILS_MOVIE_SUCCESS:
@@ -85,6 +85,15 @@ const reducer: Reducer<State, Actions> = (state = initialState, action) => {
                 error: {
                     ...state.error,
                     detailsMovie: action.payload,
+                },
+            };
+        case type.RESET_SEARCH_MOVIES:
+            return {
+                ...state,
+                searchMovies: [],
+                error: {
+                    ...state.error,
+                    searchMovies: null,
                 },
             };
         default:

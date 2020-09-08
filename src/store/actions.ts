@@ -32,10 +32,15 @@ export const getDetailsMovieFailure = (error: string) => ({
     payload: error,
 });
 
+export const resetSearchMovies = () => ({
+    type: types.RESET_SEARCH_MOVIES
+});
+
 export type Actions =
     | ReturnType<typeof getSearchMoviesRequest>
     | ReturnType<typeof getSearchMoviesSuccess>
     | ReturnType<typeof getSearchMoviesFailure>
     | ReturnType<typeof getDetailsMovieRequest>
     | ReturnType<typeof getDetailsMovieSuccess>
-    | ReturnType<typeof getDetailsMovieFailure>;
+    | ReturnType<typeof getDetailsMovieFailure>
+    | ReturnType<typeof resetSearchMovies>;

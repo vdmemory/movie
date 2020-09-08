@@ -4,7 +4,7 @@ import debounce from "debounce";
 
 import styles from "./Search.module.scss";
 import { useDispatch } from "react-redux";
-import { getSearchMoviesRequest } from "../../../store/actions";
+import { getSearchMoviesRequest, resetSearchMovies } from "../../../store/actions";
 
 type Props = {
     placeholder: string;
@@ -16,6 +16,7 @@ const Search: React.FC<Props> = ({ placeholder, title, type }) => {
     const dispatch = useDispatch();
 
     const onChangeDispatch = (value: string) => {
+        if (!value) return dispatch(resetSearchMovies());
         dispatch(getSearchMoviesRequest(value));
     };
 
