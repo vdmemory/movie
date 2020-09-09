@@ -1,20 +1,17 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 import styles from "./GoBackButton.module.scss";
+import { useCustomHistory } from "../../../hooks";
 
 const GoBackButton: React.FC = ({ children }) => {
-    const history = useHistory();
-
-    const goBack = () => {
-        history.goBack();
-    };
+    const { handleGoBack } = useCustomHistory();
 
     return (
-        <div className={styles.goBack} onClick={goBack}>
+        <div className={styles.goBack} onClick={handleGoBack}>
             {children || `Back to list`}
         </div>
     );
 };
 
 export default GoBackButton;
+

@@ -1,30 +1,17 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
-import debounce from "debounce";
 
+import { useSearchChange } from "./hooks";
 import styles from "./Search.module.scss";
-import { useDispatch } from "react-redux";
-import { getSearchMoviesRequest, resetSearchMovies } from "../../../store/actions";
 
 type Props = {
     placeholder: string;
     title: string;
-    type: string
+    type: string;
 };
 
 const Search: React.FC<Props> = ({ placeholder, title, type }) => {
-    const dispatch = useDispatch();
-
-    const onChangeDispatch = (value: string) => {
-        if (!value) return dispatch(resetSearchMovies());
-        dispatch(getSearchMoviesRequest(value));
-    };
-
-    const debounceChange = debounce(onChangeDispatch, 500);
-
-    const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        debounceChange(e.target.value);
-    };
+    const { handleSearchChange } = useSearchChange();
 
     return (
         <div className={styles.bar}>
@@ -34,7 +21,7 @@ const Search: React.FC<Props> = ({ placeholder, title, type }) => {
                 placeholder={placeholder}
                 type={type}
                 title={title}
-                onChange={onSearchChange}
+                onChange={handleSearchChange}
             />
         </div>
     );

@@ -1,13 +1,11 @@
-import React, { useCallback } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
-import { selectSearchMovies } from "../../store/selectors";
 import { SearchMovies } from "../../api/searchMovies";
 import Header from "../common/Header/Header";
 import Card from "../common/Card/Card";
 import Spinner from "../common/Spinner/Spinner";
-
+import { useCustomHistory } from "../../hooks";
+import { useMovies } from "./hooks";
 import styles from "./Movies.module.scss";
 
 const dataHeader = {
@@ -18,29 +16,25 @@ const dataHeader = {
 };
 
 const Movies: React.FC = () => {
-    const history = useHistory();
-
+    const { handlePushHistory } = useCustomHistory();
     const {
         searchMoviesData,
         searchMoviesLoading,
         searchMoviesError,
-    } = useSelector(selectSearchMovies);
+    } = useMovies();
 
-    const handleMovieClick = useCallback(
-        (id: string) => {
-            history.push(`movie/${id}`);
-        },
-        [history]
-    );
+    const renderMovies = (searchMovies: SearchMovies) => {
+        const { imdbId } = searchMovies;
 
-    const renderMovies = (searchMovies: SearchMovies) => (
-        <Card
-            key={`movie${searchMovies.imdbId}`}
-            id={searchMovies.imdbId}
-            onClick={handleMovieClick}
-            {...searchMovies}
-        />
-    );
+        return (
+            <Card
+                key={`movie${imdbId}`}
+                id={imdbId}
+                onClick={() => handlePushHistory(`movie/${imdbId}`)}
+                {...searchMovies}
+            />
+        );
+    };
 
     const renderMain = () => {
         if (searchMoviesLoading) return <Spinner />;
