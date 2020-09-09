@@ -21,8 +21,6 @@ const MovieDetails: React.FC = () => {
         detailsMovieError,
     } = useSelector(selectDetailsMovie);
 
-    console.log(detailsMovieData);
-
     useEffect(() => {
         dispatch(getDetailsMovieRequest(id));
     }, [dispatch, id]);

@@ -8,9 +8,10 @@ type Props = {
 };
 
 const RowInfo: React.FC<Props> = ({ title, subtitle }) => {
+    if (subtitle === "N/A") return null;
     return (
         <div className={styles.rowInfo}>
-            <h3 className={styles.title}>{title}</h3>
+            <h3 className={styles.title}>{`${title}: `}</h3>
             <p className={styles.subtitle}>{subtitle}</p>
         </div>
     );

@@ -1,4 +1,7 @@
 import React from "react";
+import StarRatingComponent from "react-star-rating-component";
+import { BsStar, BsStarFill } from "react-icons/bs";
+
 
 import RowInfo from "../RowInfo/RowInfo";
 
@@ -34,8 +37,9 @@ const InfoBox: React.FC<Props> = ({
     actors,
     language,
     plot,
+    imdbRating,
 }) => {
-    const infoData = [
+    const infoData: { title: string; subtitle: string }[] = [
         { title: "Original title", subtitle: title },
         { title: "Genre", subtitle: genre },
         { title: "Country", subtitle: country },
@@ -46,9 +50,22 @@ const InfoBox: React.FC<Props> = ({
         { title: "Language", subtitle: language },
     ];
 
-    // const renderRowInfo = ({title, subtitle}) => {
-    //     return <RowInfo title={title} subtitle={subtitle} />;
-    // };
+    const renderRowInfo = (
+        {
+            title,
+            subtitle,
+        }: {
+            title: string;
+            subtitle: string;
+        },
+        idx: number
+    ) => {
+        return (
+            <RowInfo key={`info-${idx}`} title={title} subtitle={subtitle} />
+        );
+    };
+
+    console.log(imdbRating);
 
     return (
         <div className={styles.infoBox}>
@@ -59,8 +76,18 @@ const InfoBox: React.FC<Props> = ({
                     <img src={poster} alt={title} />
                 </div>
                 <div className={styles.rightBar}>
-                    {/* {infoData.map(renderRowInfo)} */}
-                    right bar
+                    {infoData.map(renderRowInfo)}
+                    <h3 className={styles.titleScore}>Total score:</h3>
+                    <StarRatingComponent
+                        name="imdbRating"
+                        value={Number(imdbRating)}
+                        starCount={10}
+                        renderStarIcon={() => (
+                            <span className={styles.star}>
+                                <BsStar />
+                            </span>
+                        )}
+                    />
                 </div>
             </div>
             <div className={styles.solid}></div>
