@@ -1,6 +1,6 @@
 import React from "react";
 import StarRatingComponent from "react-star-rating-component";
-import { BsStar, BsStarFill } from "react-icons/bs";
+import { BsStar } from "react-icons/bs";
 
 
 import RowInfo from "../RowInfo/RowInfo";
@@ -64,8 +64,6 @@ const InfoBox: React.FC<Props> = ({
             <RowInfo key={`info-${idx}`} title={title} subtitle={subtitle} />
         );
     };
-
-    console.log(imdbRating);
 
     return (
         <div className={styles.infoBox}>
