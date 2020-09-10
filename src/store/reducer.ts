@@ -5,7 +5,7 @@ import { SearchMovies } from "../api/searchMovies";
 import { Actions } from "./actions";
 
 const initialState = {
-    searchMovies: [] as SearchMovies[],
+    searchMovies: {} as Record<string, string | SearchMovies[]>,
     detailsMovie: {} as DetailsMovie,
     loading: {
         searchMovies: false as boolean,
@@ -15,6 +15,7 @@ const initialState = {
         searchMovies: null as string | null,
         detailsMovie: null as string | null,
     },
+    searchValue: "" as string
 };
 
 export type State = typeof initialState;
@@ -90,11 +91,16 @@ const reducer: Reducer<State, Actions> = (state = initialState, action) => {
         case type.RESET_SEARCH_MOVIES:
             return {
                 ...state,
-                searchMovies: [],
+                searchMovies: {} as Record<string, string | SearchMovies[]>,
                 error: {
                     ...state.error,
                     searchMovies: null,
                 },
+            };
+        case type.SET_SEARCH_VALUE:
+            return {
+                ...state,
+                searchValue: action.payload
             };
         default:
             return state;

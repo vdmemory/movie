@@ -20,10 +20,10 @@ function* getDetailsMovieWorker({
 }
 
 function* getSearchMoviesWorker({
-    payload,
+    payload: { value, page },
 }: ReturnType<typeof actions.getSearchMoviesRequest>) {
     try {
-        const data = yield call(getSearchMovies, payload);
+        const data = yield call(getSearchMovies, value, page);
         if (data.Response === "False") {
             yield put(actions.getSearchMoviesFailure(data.Error));
         } else {

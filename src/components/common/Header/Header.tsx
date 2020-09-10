@@ -19,7 +19,11 @@ const Header: React.FC<Props> = ({
     return (
         <header className={styles.header}>
             <h1 className={styles.title}>{titleHeader}</h1>
-            <Search placeholder={placeholder} title={titleSearch} type={type} />
+            <Search
+                placeholder={placeholder}
+                title={titleSearch}
+                type={type}
+            />
         </header>
     );
 };

@@ -2,8 +2,8 @@ import React from "react";
 import StarRatingComponent from "react-star-rating-component";
 import { BsStar } from "react-icons/bs";
 
-
 import RowInfo from "../RowInfo/RowInfo";
+import Poster from "../Poster/Poster";
 
 import styles from "./InfoBox.module.scss";
 
@@ -71,7 +71,7 @@ const InfoBox: React.FC<Props> = ({
             <div className={styles.solid}></div>
             <div className={styles.content}>
                 <div className={styles.leftBar}>
-                    <img src={poster} alt={title} />
+                    <Poster title={title} poster={poster} />
                 </div>
                 <div className={styles.rightBar}>
                     {infoData.map(renderRowInfo)}
@@ -88,8 +88,13 @@ const InfoBox: React.FC<Props> = ({
                     />
                 </div>
             </div>
-            <div className={styles.solid}></div>
-            <p className={styles.description}>{plot}</p>
+
+            {plot !== "N/A" ? (
+                <>
+                    <div className={styles.solid}></div>
+                    <p className={styles.description}>{plot}</p>
+                </>
+            ) : null}
         </div>
     );
 };

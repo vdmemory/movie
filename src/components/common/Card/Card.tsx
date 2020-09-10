@@ -1,6 +1,6 @@
 import React from "react";
 
-import noposter from "./noposter.png"
+import Poster from "../Poster/Poster";
 import styles from "./Card.module.scss";
 
 type Props = {
@@ -19,7 +19,7 @@ const Card: React.FC<Props> = ({ title, poster, onClick, id, year }) => {
     return (
         <div className={styles.movie}>
             <figure onClick={handleClick}>
-                <img alt={title} src={poster !== "N/A" ? poster : noposter} />
+                <Poster title={title} poster={poster} />
                 <h2>{`${title} (${year})`}</h2>
             </figure>
         </div>

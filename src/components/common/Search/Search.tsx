@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { BsSearch } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { debounce } from "debounce";
 
-import { useSearchChange } from "./hooks";
+import {
+    resetSearchMovies,
+    getSearchMoviesRequest,
+    setSearchValue,
+} from "../../../store/actions";
 import styles from "./Search.module.scss";
 
 type Props = {
@@ -10,8 +16,27 @@ type Props = {
     type: string;
 };
 
-const Search: React.FC<Props> = ({ placeholder, title, type }) => {
-    const { handleSearchChange } = useSearchChange();
+const Search: React.FC<Props> = ({
+    placeholder,
+    title,
+    type,
+}) => {
+    const dispatch = useDispatch();
+
+    const onChangeDispatch = useCallback(
+        (value: string, page: number) => {
+            if (!value) return dispatch(resetSearchMovies());
+            dispatch(getSearchMoviesRequest(value, page));
+            dispatch(setSearchValue(value));
+        },
+        [dispatch]
+    );
+
+    const debounceChange = debounce(onChangeDispatch, 500);
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        debounceChange(e.target.value, 1);
+    };
 
     return (
         <div className={styles.bar}>

@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ReactPaginate from "react-paginate";
+import { useHistory } from "react-router-dom";
 
 import { SearchMovies } from "../../api/searchMovies";
 import Header from "../common/Header/Header";
 import Card from "../common/Card/Card";
 import Spinner from "../common/Spinner/Spinner";
-import { useCustomHistory } from "../../hooks";
-import { useMovies } from "./hooks";
+import { selectSearchMovies } from "../../store/selectors";
+import { getSearchMoviesRequest } from "../../store/actions";
 import styles from "./Movies.module.scss";
 
 const dataHeader = {
@@ -16,34 +19,46 @@ const dataHeader = {
 };
 
 const Movies: React.FC = () => {
-    const { handlePushHistory } = useCustomHistory();
     const {
         searchMoviesData,
         searchMoviesLoading,
         searchMoviesError,
-    } = useMovies();
+        searchValue,
+    } = useSelector(selectSearchMovies);
 
-    const renderMovies = (searchMovies: SearchMovies) => {
-        const { imdbId } = searchMovies;
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-        return (
-            <Card
-                key={`movie${imdbId}`}
-                id={imdbId}
-                onClick={() => handlePushHistory(`movie/${imdbId}`)}
-                {...searchMovies}
-            />
-        );
-    };
+    const handlePushHistory = useCallback(
+        (id: string) => {
+            history.push(id);
+        },
+        [history]
+    );
+
+    const handleChangePaginate = useCallback(
+        (data: any, searchValue: string) => {
+            let selected: number = data.selected + 1;
+            dispatch(getSearchMoviesRequest(searchValue, selected));
+        },
+        [dispatch]
+    );
+
+    const { totalResults, search = [] } = searchMoviesData;
+
+    const renderMovies = ({ imdbId, ...rest }: SearchMovies) => (
+        <Card
+            key={`movie${imdbId}`}
+            id={imdbId}
+            onClick={() => handlePushHistory(`movie/${imdbId}`)}
+            {...rest}
+        />
+    );
 
     const renderMain = () => {
         if (searchMoviesLoading) return <Spinner />;
 
-        if (
-            searchMoviesData &&
-            searchMoviesData.length === 0 &&
-            !searchMoviesError
-        )
+        if (search && search.length === 0 && !searchMoviesError)
             return <p className={styles.message}>No results ...</p>;
 
         if (searchMoviesError)
@@ -52,7 +67,7 @@ const Movies: React.FC = () => {
         return (
             <main className={styles.main}>
                 <div className={styles.movies}>
-                    {searchMoviesData.map(renderMovies)}
+                    {(search as SearchMovies[]).map(renderMovies)}
                 </div>
             </main>
         );
@@ -62,6 +77,22 @@ const Movies: React.FC = () => {
         <>
             <Header {...dataHeader} />
             {renderMain()}
+            {searchValue && search && search.length && !searchMoviesError ? (
+                <ReactPaginate
+                    previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={Math.round((+totalResults as number) / 10)}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={6}
+                    onPageChange={(data) =>
+                        handleChangePaginate(data, searchValue)
+                    }
+                    containerClassName={styles.pagination}
+                    activeClassName={styles.active}
+                />
+            ) : null}
         </>
     );
 };

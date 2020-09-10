@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HiOutlineArrowLeft } from "react-icons/hi";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
+import { selectDetailsMovie } from "../../store/selectors";
+import { getDetailsMovieRequest } from "../../store/actions";
 import GoBackButton from "../common/GoBackButton/GoBackButton";
 import InfoBox from "../common/InfoBox/InfoBox";
 import Spinner from "../common/Spinner/Spinner";
-import { useMovieDetails } from "./hooks";
 import styles from "./MovieDetails.module.scss";
 
 const MovieDetails: React.FC = () => {
+    const { id } = useParams();
+    const dispatch = useDispatch();
+
     const {
-        detailsMovieLoading,
         detailsMovieData,
+        detailsMovieLoading,
         detailsMovieError,
-    } = useMovieDetails();
+    } = useSelector(selectDetailsMovie);
+
+    useEffect(() => {
+        dispatch(getDetailsMovieRequest(id));
+    }, [dispatch, id]);
 
     const renderInfoBox = () => {
         if (detailsMovieLoading) return <Spinner />;

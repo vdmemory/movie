@@ -7,3 +7,6 @@ export const GET_DETAILS_MOVIE_SUCCESS = "GET_DETAILS_MOVIE_SUCCESS" as const;
 export const GET_DETAILS_MOVIE_FAILURE = "GET_DETAILS_MOVIE_FAILURE" as const;
 
 export const RESET_SEARCH_MOVIES = "RESET_SEARCH_MOVIES" as const;
+
+export const SET_SEARCH_VALUE = "SET_SEARCH_VALUE" as const;
+
