@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RowInfo Component Render component and its components Should renders correctly 1`] = `
+<div
+  className="rowInfo"
+>
+  <h3
+    className="title"
+  >
+    Title: 
+  </h3>
+  <p
+    className="subtitle"
+  >
+    Subtitle
+  </p>
+</div>
+`;
+
+exports[`RowInfo Component:  Should renders correctly 1`] = `
+<div
+  className="rowInfo"
+>
+  <h3
+    className="title"
+  >
+    undefined: 
+  </h3>
+  <p
+    className="subtitle"
+  />
+</div>
+`;
+
+exports[`Spinner Component Should renders correctly 1`] = `
+<div
+  className="rowInfo"
+>
+  <h3
+    className="title"
+  >
+    Title: 
+  </h3>
+  <p
+    className="subtitle"
+  >
+    Subtitle
+  </p>
+</div>
+`;
