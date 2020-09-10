@@ -15,7 +15,8 @@ const initialState = {
         searchMovies: null as string | null,
         detailsMovie: null as string | null,
     },
-    searchValue: "" as string
+    searchValue: "" as string,
+    selectedPage: 0 as number
 };
 
 export type State = typeof initialState;
@@ -100,7 +101,12 @@ const reducer: Reducer<State, Actions> = (state = initialState, action) => {
         case type.SET_SEARCH_VALUE:
             return {
                 ...state,
-                searchValue: action.payload
+                searchValue: action.payload,
+            };
+        case type.SET_SELECTED_PAGE:
+            return {
+                ...state,
+                selectedPage: action.payload,
             };
         default:
             return state;

@@ -41,6 +41,11 @@ export const setSearchValue = (value: string) => ({
     payload: value,
 });
 
+export const setSelectedPage = (select: number) => ({
+    type: types.SET_SELECTED_PAGE,
+    payload: select,
+});
+
 export type Actions =
     | ReturnType<typeof getSearchMoviesRequest>
     | ReturnType<typeof getSearchMoviesSuccess>
@@ -49,4 +54,5 @@ export type Actions =
     | ReturnType<typeof getDetailsMovieSuccess>
     | ReturnType<typeof getDetailsMovieFailure>
     | ReturnType<typeof resetSearchMovies>
-    | ReturnType<typeof setSearchValue>;
+    | ReturnType<typeof setSearchValue>
+    | ReturnType<typeof setSelectedPage>;

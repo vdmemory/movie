@@ -19,6 +19,8 @@ const selectSearchMoviesData: Selector<
 
 const selectSearchValue: Selector<State, string> = (state) => state.searchValue;
 
+const selectSelectPage: Selector<State, number> = (state) => state.selectedPage;
+
 export const selectSearchMovies: Selector<
     State,
     {
@@ -26,6 +28,7 @@ export const selectSearchMovies: Selector<
         searchMoviesError: null | string;
         searchMoviesData: Record<string, string | SearchMovies[]>;
         searchValue: string;
+        selectedPage: number;
     }
 > = createSelector(
     [
@@ -33,13 +36,21 @@ export const selectSearchMovies: Selector<
         selectSearchMoviesError,
         selectSearchMoviesData,
         selectSearchValue,
+        selectSelectPage,
     ],
-    (searchMoviesLoading, searchMoviesError, searchMoviesData, searchValue) => {
+    (
+        searchMoviesLoading,
+        searchMoviesError,
+        searchMoviesData,
+        searchValue,
+        selectedPage
+    ) => {
         return {
             searchMoviesLoading,
             searchMoviesError,
             searchMoviesData,
             searchValue,
+            selectedPage,
         };
     }
 );

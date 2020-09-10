@@ -8,7 +8,7 @@ import Header from "../common/Header/Header";
 import Card from "../common/Card/Card";
 import Spinner from "../common/Spinner/Spinner";
 import { selectSearchMovies } from "../../store/selectors";
-import { getSearchMoviesRequest } from "../../store/actions";
+import { getSearchMoviesRequest, setSelectedPage } from "../../store/actions";
 import styles from "./Movies.module.scss";
 
 const dataHeader = {
@@ -20,10 +20,11 @@ const dataHeader = {
 
 const Movies: React.FC = () => {
     const {
-        searchMoviesData,
+        searchMoviesData: { totalResults, search = [] },
         searchMoviesLoading,
         searchMoviesError,
         searchValue,
+        selectedPage,
     } = useSelector(selectSearchMovies);
 
     const history = useHistory();
@@ -39,12 +40,11 @@ const Movies: React.FC = () => {
     const handleChangePaginate = useCallback(
         (data: any, searchValue: string) => {
             let selected: number = data.selected + 1;
+            dispatch(setSelectedPage(data.selected));
             dispatch(getSearchMoviesRequest(searchValue, selected));
         },
         [dispatch]
     );
-
-    const { totalResults, search = [] } = searchMoviesData;
 
     const renderMovies = ({ imdbId, ...rest }: SearchMovies) => (
         <Card
@@ -91,6 +91,7 @@ const Movies: React.FC = () => {
                     }
                     containerClassName={styles.pagination}
                     activeClassName={styles.active}
+                    initialPage={selectedPage}
                 />
             ) : null}
         </>
