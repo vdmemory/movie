@@ -2,6 +2,7 @@ import React from "react";
 import { createRenderer } from "react-test-renderer/shallow";
 
 import RowInfo from "./RowInfo";
+import { deepEqual } from "../../../testUtils";
 
 type Props = {
   title: string;
@@ -32,28 +33,29 @@ describe("RowInfo Component", () => {
       expect(output).toMatchSnapshot();
     });
 
-    test("Should render subtitle class", () => {
-      const { output } = setup(propsRender);
-      const [title] = output.props.children;
-      expect(title.props.className).toBe("title");
+    test("Should render subtitle class and text title", () => {
+        const { output } = setup(propsRender);
+        const [title] = output.props.children;
+        expect(title.props.className).toBe("title");
+        expect(title.props.children).toBe("Title: ");
     });
 
-    test("Should render text title", () => {
-      const { output } = setup(propsRender);
-      const [title] = output.props.children;
-      expect(title.props.children).toBe("Title: ");
+    test("Should render subtitle class and text Subtitle", () => {
+        const { output } = setup(propsRender);
+        const [, subtitle] = output.props.children;
+        expect(subtitle.props.className).toBe("subtitle");
+        expect(subtitle.props.children).toBe("Subtitle");
     });
 
-    test("Should render subtitle class", () => {
-      const { output } = setup(propsRender);
-      const [, subtitle] = output.props.children;
-      expect(subtitle.props.className).toBe("subtitle");
-    });
-
-    test("Should render text Subtitle", () => {
-      const { output } = setup(propsRender);
-      const [, subtitle] = output.props.children;
-      expect(subtitle.props.children).toBe("Subtitle");
+    describe("Check props", () => {
+        const expectedProps = {
+            title: "Title",
+            subtitle: "Subtitle",
+        };
+        test("Should render and check props", () => {
+            const { props } = setup(propsRender);
+            expect(deepEqual(props, expectedProps)).toBeTruthy();
+        });
     });
   });
 

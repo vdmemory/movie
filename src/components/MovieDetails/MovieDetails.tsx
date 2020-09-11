@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { HiOutlineArrowLeft } from "react-icons/hi";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -38,10 +37,7 @@ const MovieDetails: React.FC = () => {
 
     return (
         <>
-            <GoBackButton>
-                <HiOutlineArrowLeft className={styles.iconButton} /> Back To
-                List
-            </GoBackButton>
+            <GoBackButton name="Back To List" />
             {renderInfoBox()}
         </>
     );

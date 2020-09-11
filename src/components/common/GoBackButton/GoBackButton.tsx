@@ -1,9 +1,14 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
+import { HiOutlineArrowLeft } from "react-icons/hi";
 
 import styles from "./GoBackButton.module.scss";
 
-const GoBackButton: React.FC = ({ children }) => {
+type Props = {
+    name: string;
+}
+
+const GoBackButton: React.FC<Props> = ({name}) => {
     const history = useHistory();
 
     const handleGoBack = useCallback(() => {
@@ -12,7 +17,8 @@ const GoBackButton: React.FC = ({ children }) => {
 
     return (
         <div className={styles.goBack} onClick={handleGoBack}>
-            {children || `Back to list`}
+            <HiOutlineArrowLeft className={styles.iconButton} />
+            {name}
         </div>
     );
 };

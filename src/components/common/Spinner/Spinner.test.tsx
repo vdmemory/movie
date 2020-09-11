@@ -21,8 +21,9 @@ describe("Spinner Component", () => {
     expect(output.props.className).toBe("wrapSpinner");
   });
 
-  test("Should render wrapSpinner class", () => {
+  test("Should render spinner class", () => {
     const output = setup();
-    expect(output.props.className).toBe("wrapSpinner");
+    const spinner = output.props.children;
+    expect(spinner.props.className).toBe("spinner");
   });
 });

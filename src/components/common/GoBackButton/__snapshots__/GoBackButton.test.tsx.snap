@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoBackButton Component Render component and its components Should renders correctly 1`] = `
+<div
+  className="goBack"
+  onClick={[Function]}
+>
+  <HiOutlineArrowLeft
+    className="iconButton"
+  />
+  Back To List
+</div>
+`;

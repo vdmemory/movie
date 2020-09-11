@@ -12,17 +12,11 @@ type FetchedMovieDetails = {
     Language: string;
     Country: string;
     Poster: string;
-    Ratings: Ratings[];
     imdbRating: string;
     imdbID: string;
     Type: string;
     Response: boolean;
     Error: string;
-};
-
-type Ratings = {
-    Source: string;
-    Value: string;
 };
 
 // Class for typing and snake_case to camelCase
@@ -37,7 +31,6 @@ export class DetailsMovie {
     language: string;
     country: string;
     poster: string;
-    ratings: Ratings[];
     imdbRating: string;
     imdbId: string;
     type: string;
@@ -54,7 +47,6 @@ export class DetailsMovie {
         this.language = movie.Language;
         this.country = movie.Country;
         this.poster = movie.Poster;
-        this.ratings = movie.Ratings;
         this.imdbRating = movie.imdbRating;
         this.imdbId = movie.imdbID;
         this.type = movie.Type;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component Render component and its components Should renders correctly 1`] = `
+<header
+  className="header"
+>
+  <h1
+    className="title"
+  >
+    this title header
+  </h1>
+  <Search
+    placeholder="this placeholder text"
+    title="this title search"
+    type="this type from input search"
+  />
+</header>
+`;

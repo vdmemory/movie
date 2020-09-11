@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoBox Component Render component and its components Should renders correctly 1`] = `
+<div
+  className="infoBox"
+>
+  <h2
+    className="title"
+  >
+    this title (this year)
+  </h2>
+  <div
+    className="solid"
+  />
+  <div
+    className="content"
+  >
+    <div
+      className="leftBar"
+    >
+      <Card
+        poster="this poster"
+        title="this title"
+      />
+    </div>
+    <div
+      className="rightBar"
+    >
+      <RowInfo
+        subtitle="this title"
+        title="Original title"
+      />
+      <RowInfo
+        subtitle="this genre"
+        title="Genre"
+      />
+      <RowInfo
+        subtitle="this country"
+        title="Country"
+      />
+      <RowInfo
+        subtitle="this year"
+        title="Year"
+      />
+      <RowInfo
+        subtitle="this runtime"
+        title="Duration"
+      />
+      <RowInfo
+        subtitle="this director"
+        title="Director"
+      />
+      <RowInfo
+        subtitle="this actors"
+        title="Сast of actors"
+      />
+      <RowInfo
+        subtitle="this language"
+        title="Language"
+      />
+      <h3
+        className="titleScore"
+      >
+        Total score:
+      </h3>
+      <StarRatingComponent
+        editing={true}
+        emptyStarColor="#333"
+        name="imdbRating"
+        renderStarIcon={[Function]}
+        starColor="#ffb400"
+        starCount={10}
+        value={NaN}
+      />
+    </div>
+  </div>
+  <React.Fragment>
+    <div
+      className="solid"
+    />
+    <p
+      className="description"
+    >
+      this plot
+    </p>
+  </React.Fragment>
+</div>
+`;
