@@ -4,7 +4,7 @@ import * as types from "./types";
 import { getDetailsMovie } from "../api/detailsMovie";
 import { getSearchMovies } from "../api/searchMovies";
 
-function* getDetailsMovieWorker({
+export function* getDetailsMovieWorker({
     payload,
 }: ReturnType<typeof actions.getDetailsMovieRequest>) {
     try {
@@ -19,7 +19,7 @@ function* getDetailsMovieWorker({
     }
 }
 
-function* getSearchMoviesWorker({
+export function* getSearchMoviesWorker({
     payload: { value, page },
 }: ReturnType<typeof actions.getSearchMoviesRequest>) {
     try {
@@ -38,3 +38,5 @@ export default function* watcher() {
     yield takeLatest(types.GET_DETAILS_MOVIE_REQUEST, getDetailsMovieWorker);
     yield takeLatest(types.GET_SEARCH_MOVIES_REQUEST, getSearchMoviesWorker);
 }
+
+ 

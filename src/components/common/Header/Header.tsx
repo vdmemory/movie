@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import Search from "../Search/Search";
 
 import styles from "./Header.module.scss";
@@ -8,6 +8,7 @@ type Props = {
     titleHeader: string;
     titleSearch: string;
     type: string;
+    dispatch: Dispatch<any>;
 };
 
 const Header: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const Header: React.FC<Props> = ({
     titleSearch,
     type,
     placeholder,
+    dispatch,
 }) => {
     return (
         <header className={styles.header}>
@@ -23,6 +25,7 @@ const Header: React.FC<Props> = ({
                 placeholder={placeholder}
                 title={titleSearch}
                 type={type}
+                dispatch={dispatch}
             />
         </header>
     );

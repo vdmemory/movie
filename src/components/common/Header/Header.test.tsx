@@ -1,15 +1,14 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { createRenderer } from "react-test-renderer/shallow";
 
-import { deepEqual } from "../../../testUtils";
 import Header from "./Header";
-import Search from "../Search/Search";
 
 type Props = {
     placeholder: string;
     titleHeader: string;
     titleSearch: string;
     type: string;
+    dispatch: Dispatch<any>;
 };
 
 const setup = (props: Props) => {
@@ -24,6 +23,7 @@ const propsRender: Props = {
     titleHeader: "this title header",
     titleSearch: "this title search",
     type: "this type from input search",
+    dispatch: jest.fn(),
 };
 
 describe("Header Component", () => {
@@ -47,31 +47,5 @@ describe("Header Component", () => {
             expect(title.props.children).toBe("this title header");
         });
 
-        describe("Check props", () => {
-            const expectedProps = {
-                placeholder: "this placeholder text",
-                titleHeader: "this title header",
-                titleSearch: "this title search",
-                type: "this type from input search",
-            };
-            test("Should render and check props", () => {
-                const { props } = setup(propsRender);
-                expect(deepEqual(props, expectedProps)).toBeTruthy();
-            });
-        });
-
-        describe("Search", () => {
-            const expectedProps = {
-                placeholder: "this placeholder text",
-                title: "this title search",
-                type: "this type from input search",
-            };
-            test("Should render and check props", () => {
-                const { output, props } = setup(propsRender);
-                const [, search] = output.props.children;
-                expect(search.type).toBe(Search);
-                expect(deepEqual(search.props, expectedProps)).toBeTruthy();
-            });
-        });
     });
 });

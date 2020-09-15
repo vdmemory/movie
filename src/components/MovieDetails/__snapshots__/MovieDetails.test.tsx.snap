@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails Component Render component and its components Should renders correctly 1`] = `
+<React.Fragment>
+  <GoBackButton
+    name="Back To List"
+  />
+  <section
+    className="details"
+  >
+    <InfoBox />
+  </section>
+</React.Fragment>
+`;
+
+exports[`MovieDetails Component Renderer of the component and its components, if the error message Should renders correctly 1`] = `
+<React.Fragment>
+  <GoBackButton
+    name="Back To List"
+  />
+  <p
+    className="message"
+  >
+    Error message
+  </p>
+</React.Fragment>
+`;
+
+exports[`MovieDetails Component Renderer of the component and its components, if the loading flag is true Should renders correctly 1`] = `
+<React.Fragment>
+  <GoBackButton
+    name="Back To List"
+  />
+  <Spinner />
+</React.Fragment>
+`;

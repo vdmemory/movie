@@ -52,7 +52,7 @@ describe("GoBackButton Component", () => {
             const { output } = setup(propsRender);
             output.props.onClick();
             expect(history.goBack).toBeCalled();
-            //@ts-expect-error history.goBack is mocked
+            // @ts-expect-error history.goBack is mocked
             history.goBack.mockClear();
         });
 

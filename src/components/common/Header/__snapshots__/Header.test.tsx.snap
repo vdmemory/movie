@@ -10,6 +10,7 @@ exports[`Header Component Render component and its components Should renders cor
     this title header
   </h1>
   <Search
+    dispatch={[MockFunction]}
     placeholder="this placeholder text"
     title="this title search"
     type="this type from input search"

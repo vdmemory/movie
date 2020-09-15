@@ -12,10 +12,10 @@ import { getSearchMoviesRequest, setSelectedPage } from "../../store/actions";
 import styles from "./Movies.module.scss";
 
 const dataHeader = {
-  titleHeader: "Find Movies, TV shows and more ...",
-  titleSearch: "Search",
-  type: "text",
-  placeholder: "search movie ...",
+    titleHeader: "Find Movies, TV shows and more ...",
+    titleSearch: "Search",
+    type: "text",
+    placeholder: "search movie ...",
 };
 
 const Movies: React.FC = () => {
@@ -74,30 +74,32 @@ const Movies: React.FC = () => {
   };
 
   return (
-    <>
-      <Header {...dataHeader} />
-      {renderMain()}
-      {searchValue &&
-      search &&
-      search.length &&
-      !searchMoviesError &&
-      (+totalResults as number) >= 10 ? (
-        <ReactPaginate
-          key={selectedPage}
-          previousLabel={"previous"}
-          nextLabel={"next"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
-          pageCount={Math.round((+totalResults as number) / 10)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={6}
-          onPageChange={(data) => handleChangePaginate(data, searchValue)}
-          containerClassName={styles.pagination}
-          activeClassName={styles.active}
-          initialPage={selectedPage}
-        />
-      ) : null}
-    </>
+      <>
+          <Header {...dataHeader} dispatch={dispatch} />
+          {renderMain()}
+          {searchValue &&
+          search &&
+          search.length &&
+          !searchMoviesError &&
+          (+totalResults as number) >= 10 ? (
+              <ReactPaginate
+                  key={selectedPage}
+                  previousLabel={"previous"}
+                  nextLabel={"next"}
+                  breakLabel={"..."}
+                  breakClassName={"break-me"}
+                  pageCount={Math.round((+totalResults as number) / 10)}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={6}
+                  onPageChange={(data) =>
+                      handleChangePaginate(data, searchValue)
+                  }
+                  containerClassName={styles.pagination}
+                  activeClassName={styles.active}
+                  initialPage={selectedPage}
+              />
+          ) : null}
+      </>
   );
 };
 

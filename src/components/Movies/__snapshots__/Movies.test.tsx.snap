@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchMovies Component Renderer of the component and its components, if a search query was entered Should renders correctly 1`] = `
+<React.Fragment>
+  <Header
+    dispatch={[MockFunction]}
+    placeholder="search movie ..."
+    titleHeader="Find Movies, TV shows and more ..."
+    titleSearch="Search"
+    type="text"
+  />
+  <main
+    className="main"
+  >
+    <div
+      className="movies"
+    >
+      <Card
+        id="this imdbId"
+        onClick={[Function]}
+        poster="this poster"
+        title="this title"
+        type="this type"
+        year="this year"
+      />
+    </div>
+  </main>
+  <o
+    activeClassName="active"
+    breakClassName="break-me"
+    breakLabel="..."
+    containerClassName="pagination"
+    disableInitialCallback={false}
+    disabledClassName="disabled"
+    initialPage={0}
+    marginPagesDisplayed={2}
+    nextAriaLabel="Next page"
+    nextClassName="next"
+    nextLabel="next"
+    onPageChange={[Function]}
+    pageCount={10}
+    pageRangeDisplayed={6}
+    previousAriaLabel="Previous page"
+    previousClassName="previous"
+    previousLabel="previous"
+  />
+</React.Fragment>
+`;
+
+exports[`searchMovies Component Renderer of the component and its components, if no search query has been entered Should renders correctly 1`] = `
+<React.Fragment>
+  <Header
+    dispatch={[MockFunction]}
+    placeholder="search movie ..."
+    titleHeader="Find Movies, TV shows and more ..."
+    titleSearch="Search"
+    type="text"
+  />
+  <p
+    className="message"
+  >
+    No results ...
+  </p>
+</React.Fragment>
+`;
+
+exports[`searchMovies Component Renderer of the component and its components, if the error message Should renders correctly 1`] = `
+<React.Fragment>
+  <Header
+    dispatch={[MockFunction]}
+    placeholder="search movie ..."
+    titleHeader="Find Movies, TV shows and more ..."
+    titleSearch="Search"
+    type="text"
+  />
+  <p
+    className="message"
+  >
+    Error message
+  </p>
+</React.Fragment>
+`;
+
+exports[`searchMovies Component Renderer of the component and its components, if the loading flag is true Should renders correctly 1`] = `
+<React.Fragment>
+  <Header
+    dispatch={[MockFunction]}
+    placeholder="search movie ..."
+    titleHeader="Find Movies, TV shows and more ..."
+    titleSearch="Search"
+    type="text"
+  />
+  <Spinner />
+</React.Fragment>
+`;

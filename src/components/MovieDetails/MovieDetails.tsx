@@ -10,7 +10,7 @@ import Spinner from "../common/Spinner/Spinner";
 import styles from "./MovieDetails.module.scss";
 
 const MovieDetails: React.FC = () => {
-    const { id } = useParams();
+    const { id }: any = useParams();
     const dispatch = useDispatch();
 
     const {
